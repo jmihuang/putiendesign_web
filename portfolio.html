@@ -2502,6 +2502,34 @@
                     "all_shop_design_3.png",
                     "all_shop_design_4.png",
                   ];
+                  // External links mapped to files order above
+                  var urls = [
+                    "https://www.100.com.tw/works/22272?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/21797?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/20694?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/20680?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/9441?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/13958?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/9651?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/21994?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/20692?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/20681?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                    "https://www.100.com.tw/works/13951?source_from=company_detail&itm_source=company&itm_medium=detail&itm_campaign=work&itm_content=all_work",
+                  ];
+                  // Hover captions mapped to files order above
+                  var titles = [
+                    "台中 l K宅",
+                    "台中 ❘ H宅",
+                    "台中 ❘ Ｊ宅",
+                    "PUTIEN ❘ OFFICE",
+                    "台中 l G宅",
+                    "雲林 l C宅",
+                    "台北 l P宅",
+                    "嘉義 ❘ 阿潘肉包",
+                    "IN ❘ OFFICE SHOP ❘ 引咖啡",
+                    "MINEQUO ❘ COUNTER",
+                    "茉菲定律 ❘ OFFICE",
+                  ];
                   function typeOf(name) {
                     if (/^all_inter_/i.test(name)) return "inter";
                     if (/^all_shop_/i.test(name)) return "shop";
@@ -2518,25 +2546,27 @@
                     files.forEach(function (name) {
                       var kind = typeOf(name);
                       if (filter && filter !== "all" && kind !== filter) return;
-                      var href = base + name;
+                      var href = urls[idx] || base + name;
+                      var imgSrc = base + name;
                       var item = document.createElement("a");
                       item.className = "pf-item";
                       item.href = href;
                       item.target = "_blank";
-                      item.rel = "noopener";
+                      item.rel = "noopener noreferrer";
                       var img = new Image();
                       img.loading = "lazy";
                       img.decoding = "async";
-                      img.src = href;
+                      img.src = imgSrc;
                       var title = name
                         .replace(/_/g, " ")
                         .replace(/\.[^.]+$/, "");
-                      img.alt = title;
+                      var displayTitle = titles[idx] || title;
+                      img.alt = displayTitle;
                       var overlay = document.createElement("div");
                       overlay.className = "overlay";
                       var caption = document.createElement("div");
                       caption.className = "caption";
-                      caption.textContent = title;
+                      caption.textContent = displayTitle;
                       item.appendChild(img);
                       item.appendChild(overlay);
                       item.appendChild(caption);
