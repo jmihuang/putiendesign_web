@@ -118,6 +118,23 @@
       .social a:hover {
         color: #000;
       }
+
+      /* Mobile: stack into two rows (info then map) */
+      @media (max-width: 767px) {
+        .contact {
+          display: block;
+          padding: 20px 16px;
+        }
+        .contact-info,
+        .contact-map {
+          width: 100%;
+          margin: 0 0 16px 0;
+        }
+        .contact-map iframe {
+          width: 100% !important;
+          height: 280px;
+        }
+      }
     </style>
     <!-- This site is optimized with the Yoast SEO plugin v24.1 - https://yoast.com/wordpress/plugins/seo/ -->
     <title>
@@ -2293,15 +2310,13 @@
                         id="menu-item-3388"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3388"
                       >
-                        <a href="./portfolio.html" title="Portfolio"
-                          >Portfolio</a
-                        >
+                        <a href="portfolio.html" title="Portfolio">Portfolio</a>
                       </li>
                       <li
                         id="menu-item-3422"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3422"
                       >
-                        <a href="./contact.html" title="Contact">Contact</a>
+                        <a href="contact.html" title="Contact">Contact</a>
                       </li>
                     </ul>
                   </div>
@@ -2316,39 +2331,24 @@
                   <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-3396 current_page_item menu-item-3407"
                   >
-                    <a
-                      href="https://www.putiendesign.com/"
-                      aria-current="page"
-                      title="Home"
+                    <a href="index.html" aria-current="page" title="Home"
                       >Home</a
                     >
                   </li>
                   <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3386"
                   >
-                    <a
-                      href="https://www.putiendesign.com/about-us-%e9%97%9c%e6%96%bc/"
-                      title="About"
-                      >About</a
-                    >
+                    <a href="about.html" title="About">About</a>
                   </li>
                   <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3388"
                   >
-                    <a
-                      href="https://www.putiendesign.com/about-us/"
-                      title="Portfolio"
-                      >Portfolio</a
-                    >
+                    <a href="portfolio.html" title="Portfolio">Portfolio</a>
                   </li>
                   <li
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3422"
                   >
-                    <a
-                      href="https://www.putiendesign.com/contact-%e8%81%af%e7%b5%a1%e6%88%91%e5%80%91/"
-                      title="Contact"
-                      >Contact</a
-                    >
+                    <a href="contact.html" title="Contact">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -2372,7 +2372,7 @@
             </div>
             <div class="be-wrap be-row clearfix">
               <section class="contact">
-                <div>
+                <div class="contact-info">
                   <ul>
                     <li>
                       <i class="fa-solid fa-location-dot"></i> 402
@@ -2403,7 +2403,7 @@
                     ></a>
                   </div>
                 </div>
-                <div>
+                <div class="contact-map">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.0880238357263!2d120.65402437609022!3d24.13354667841094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693dae4dec5ad5%3A0x98c7591b1c073c88!2zNDAy5Y-w5Lit5biC5Y2X5Y2A5bSH5YCr5YyX6KGXMTnlt7cxOOiZnw!5e0!3m2!1szh-TW!2stw!4v1756796091944!5m2!1szh-TW!2stw"
                     width="600"
