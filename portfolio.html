@@ -2350,7 +2350,7 @@
                   padding: 4rem 0;
                 "
               >
-                Contact Us
+                Portfolio
               </h3>
             </div>
             <section id="portfolio-grid" class="be-wrap be-row clearfix">
@@ -2478,7 +2478,7 @@
                     "all_inter_design_1.png",
                     "all_inter_design_2.png",
                     "all_inter_design_3.png",
-                    "all_inter_design_4.png",
+                    "all_shop_design_5.png",
                     "all_inter_design_5.png",
                     "all_inter_design_6.png",
                     "all_inter_design_7.png",
@@ -2516,11 +2516,22 @@
                     "茉菲定律 ❘ OFFICE",
                   ];
                   function typeOf(name) {
-                    if (/^all_inter_/i.test(name)) return "inter";
                     if (/^all_shop_/i.test(name)) return "shop";
+                    if (/^all_inter_/i.test(name)) return "inter";
                     if (/^all_/i.test(name)) return "all";
                     return "other";
                   }
+                  // Build metadata map by filename to keep URL/title aligned even after filtering
+                  var metaByName = (function () {
+                    var map = {};
+                    for (var i = 0; i < files.length; i++) {
+                      map[files[i]] = {
+                        url: urls[i] || null,
+                        title: titles[i] || null,
+                      };
+                    }
+                    return map;
+                  })();
                   var grid = document.querySelector(".pf-grid");
                   if (!grid) return;
                   var base =
@@ -2531,7 +2542,8 @@
                     files.forEach(function (name) {
                       var kind = typeOf(name);
                       if (filter && filter !== "all" && kind !== filter) return;
-                      var href = urls[idx] || base + name;
+                      var meta = metaByName[name] || {};
+                      var href = meta.url || base + name;
                       var imgSrc = base + name;
                       var item = document.createElement("a");
                       item.className = "pf-item";
@@ -2545,7 +2557,7 @@
                       var title = name
                         .replace(/_/g, " ")
                         .replace(/\.[^.]+$/, "");
-                      var displayTitle = titles[idx] || title;
+                      var displayTitle = meta.title || title;
                       img.alt = displayTitle;
                       var overlay = document.createElement("div");
                       overlay.className = "overlay";
